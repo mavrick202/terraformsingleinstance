@@ -28,3 +28,21 @@ variable "azs" {
   type = "list"
   default = ["us-east-1a", "us-east-1b", "us-east-1c"]
 }
+variable "environment" { default = "dev" }
+variable "instance_type" {
+  type = "map"
+  default = {
+    dev = "t2.nano"
+    test = "t2.micro"
+    prod = "t2.medium"
+    }
+}
+variable "bucket" {
+  type = "map"
+  default = {
+    dev = "devbucket"
+    test = "testbucket"
+    prod = "prodbucket"
+    }
+}
+

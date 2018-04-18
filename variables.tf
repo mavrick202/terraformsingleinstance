@@ -37,12 +37,5 @@ variable "instance_type" {
     prod = "t2.medium"
     }
 }
-variable "bucket" {
-  type = "map"
-  default = {
-    dev = "devbucket"
-    test = "testbucket"
-    prod = "prodbucket"
-    }
-}
+
 

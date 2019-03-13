@@ -89,9 +89,12 @@ resource "aws_security_group" "allow_all" {
     }
 }
 
-data "aws_subnet_ids" "private" {
-  vpc_id = "${aws_vpc.default.id}"
- }	
+data "aws_ami" "my_ami" {
+      most_recent      = true
+      #name_regex       = "^mavrick"
+      owners           = ["0534900xxxxx"]
+}
+
 
 resource "aws_instance" "web-1" {
     ami = "${lookup(var.amis, var.aws_region)}"
@@ -106,6 +109,10 @@ resource "aws_instance" "web-1" {
         Env = "Prod"
         Owner = "Sree"
     }
+}
+
+output "ami_id" {
+  value = "${data.aws_ami.my_ami.id}"
 }
 
 

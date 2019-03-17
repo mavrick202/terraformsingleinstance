@@ -21,12 +21,12 @@
     "inline": [
       "sleep 30",
       "sudo yum update -y",
-      "sudo yum install java-1.8.0 java-1.8.0-openjdk-devel tomcat8-webapps -y",
-      "sudo yum remove java-1.7.0-openjdk  -y",
-      "sudo wget https://github.com/lobster1234/helloworld-api/files/953511/helloworld-api.war.gz -O /usr/share/tomcat8/webapps/helloworld-api.war.gz",
-      "sudo gunzip /usr/share/tomcat8/webapps/helloworld-api.war.gz",
-      "sudo chkconfig tomcat8 on",
       "sudo yum install nginx -y",
+	  "sudo git clone https://github.com/mavrick202/webhooktesting.git",
+	  "sudo rm -rf /usr/share/nginx/html/index.html",
+	  "sudo cp webhooktesting/index.html /usr/share/nginx/html/index.html",
+	  "sudo cp webhooktesting/style.css /usr/share/nginx/html/style.css",
+	  "sudo cp webhooktesting/scorekeeper.js /usr/share/nginx/html/scorekeeper.js",
       "sudo service nginx start",
       "sudo chkconfig nginx on"
       ]

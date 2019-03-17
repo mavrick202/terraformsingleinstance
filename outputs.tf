@@ -13,7 +13,7 @@ output "availability_zone" {
 //  description = "List of placement groups of instances"
 //  value       = ["${element(concat(aws_instance.web-1.*.placement_group, list("")), 0)}"]
 //}
-
+//
 output "key_name" {
   description = "List of key names of instances"
   value       = ["${aws_instance.web-1.*.key_name}"]

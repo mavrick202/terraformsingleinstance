@@ -7,14 +7,14 @@ provider "aws" {
 resource "aws_vpc" "default" {
     cidr_block = "${var.vpc_cidr}"
     enable_dns_hostnames = true
-    tags {
+    tags = {
         Name = "${var.vpc_name}"
     }
 }
 
 resource "aws_internet_gateway" "default" {
     vpc_id = "${aws_vpc.default.id}"
-	tags {
+	tags = {
         Name = "${var.IGW_name}"
     }
 }
@@ -24,7 +24,7 @@ resource "aws_subnet" "subnet1-public" {
     cidr_block = "${var.public_subnet1_cidr}"
     availability_zone = "us-east-1a"
 
-    tags {
+    tags = {
         Name = "${var.public_subnet1_name}"
     }
 }
@@ -34,7 +34,7 @@ resource "aws_subnet" "subnet2-public" {
     cidr_block = "${var.public_subnet2_cidr}"
     availability_zone = "us-east-1b"
 
-    tags {
+    tags = {
         Name = "${var.public_subnet2_name}"
     }
 }
@@ -44,7 +44,7 @@ resource "aws_subnet" "subnet3-public" {
     cidr_block = "${var.public_subnet3_cidr}"
     availability_zone = "us-east-1c"
 
-    tags {
+    tags = {
         Name = "${var.public_subnet3_name}"
     }
 	
@@ -59,7 +59,7 @@ resource "aws_route_table" "terraform-public" {
         gateway_id = "${aws_internet_gateway.default.id}"
     }
 
-    tags {
+    tags = {
         Name = "${var.Main_Routing_Table}"
     }
 }
@@ -104,7 +104,7 @@ resource "aws_instance" "web-1" {
     subnet_id = "${aws_subnet.subnet1-public.id}"
     vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
     associate_public_ip_address = true	
-    tags {
+    tags = {
         Name = "Server-${count.index}"
         Env = "Prod"
         Owner = "Sree"
@@ -114,5 +114,3 @@ resource "aws_instance" "web-1" {
 output "ami_id" {
   value = "${data.aws_ami.my_ami.id}"
 }
-
-

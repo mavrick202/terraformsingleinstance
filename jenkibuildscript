@@ -1,0 +1,12 @@
+#!/bin/bash
+ls -al
+pwd
+echo "Running the packer script now..!!"
+echo .
+echo .
+/tmp/packer build packer.json
+echo .
+echo .
+/tmp/terraform init
+/tmp/terraform apply --var-file test.tfvars -var 'aws_access_key=AAAAAAA' -var 'aws_secret_key=sdadsdasdasdsadasdasdasdasdasd' --auto-approve
+echo "Infra Built Sucessfully....!!!"

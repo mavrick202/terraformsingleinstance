@@ -92,7 +92,7 @@ resource "aws_security_group" "allow_all" {
 data "aws_ami" "my_ami" {
       most_recent      = true
       #name_regex       = "^mavrick"
-      owners           = ["053490018989"]
+      owners           = ["444984551434"]
 }
 
 
@@ -105,7 +105,7 @@ resource "aws_instance" "web-1" {
     vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
     associate_public_ip_address = true	
     tags = {
-        Name = "Server-${count.index}"
+        Name = "Server-1"
         Env = "Prod"
         Owner = "Sree"
     }

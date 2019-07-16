@@ -6,15 +6,13 @@
   },
   "builders": [{
     "type": "amazon-ebs",
-    "access_key": "{{user `aws_access_key`}}",
-    "secret_key": "{{user `aws_secret_key`}}",
     "region": "us-east-1",
-    "source_ami": "ami-0080e4c5bc078760e",
+    "source_ami": "ami-035b3c7efe6d061d5",
     "instance_type": "t2.micro",
     "ssh_username": "ec2-user",
     "ami_name": "DevOpsClass-Build-{{timestamp}}",
-    "vpc_id": "vpc-0f289bdbc4725af60",
-    "subnet_id": "subnet-0d6dcc6af907c7833"
+    "vpc_id": "vpc-04f7335cb86edaa63",
+    "subnet_id": "subnet-0e1cf8678869028e0"
   }],
   "provisioners": [{
     "type": "shell",
@@ -33,3 +31,4 @@
       ]
   }]
 }
+

@@ -89,17 +89,17 @@ resource "aws_security_group" "allow_all" {
     }
 }
 
-data "aws_ami" "my_ami" {
-      most_recent      = true
-      #name_regex       = "^mavrick"
-      owners           = ["444984551434"]
-}
+#data "aws_ami" "my_ami" {
+#      most_recent      = true
+#      #name_regex       = "^mavrick"
+#      owners           = ["444984551434"]
+#}
 
 
 resource "aws_instance" "web-1" {
     ami = "${data.aws_ami.my_ami.id}"
     availability_zone = "us-east-1a"
-    instance_type = "t2.nano"
+    instance_type = "t2.micro"
     key_name = "LaptopKey"
     subnet_id = "${aws_subnet.subnet1-public.id}"
     vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
@@ -111,6 +111,6 @@ resource "aws_instance" "web-1" {
     }
 }
 
-output "ami_id" {
-  value = "${data.aws_ami.my_ami.id}"
-}
+#output "ami_id" {
+#  value = "${data.aws_ami.my_ami.id}"
+#}

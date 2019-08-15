@@ -13,6 +13,8 @@ Type=notify
 # for containers run by docker
 #ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
 ExecStart=/usr/bin/dockerd -H unix:// -H tcp://0.0.0.0:2375 -H fd:// --containerd=/run/containerd/containerd.sock
+#sudo systemctl daemon-reload
+#sudo systemctl restart docker
 ExecReload=/bin/kill -s HUP $MAINPID
 TimeoutSec=0
 RestartSec=2

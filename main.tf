@@ -115,3 +115,10 @@ resource "aws_instance" "web-1" {
 #output "ami_id" {
 #  value = "${data.aws_ami.my_ami.id}"
 #}
+#!/bin/bash
+# echo "Listing the files in the repo."
+# ls -al
+# echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
+# packer build -var 'aws_access_key=XXXXXXXXXXXXX' -var 'aws_secret_key=YYYYYYYYYYYYYYYYYYYY' packer.json
+# echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
+# terraform apply --var-file test.tfvars -var="aws_access_key=XXXXXXXXXXXXX" -var='aws_secret_key=YYYYYYYYYYYYYYYYYYYY' --auto-approve

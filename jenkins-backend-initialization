@@ -1,0 +1,18 @@
+echo "Coming From Docker Jenkins Slave..."
+echo .
+pwd
+echo .
+ls -al
+echo .
+wget https://releases.hashicorp.com/terraform/0.12.20/terraform_0.12.20_linux_amd64.zip
+unzip terraform_0.12.20_linux_amd64.zip
+rm -f terraform_0.12.20_linux_amd64.zip
+chmod 700 terraform
+echo .
+./terraform version
+echo .
+./terraform init -backend-config="access_key=AKIA2QEFL123456789" -backend-config="secret_key=sadsadasdasdsadsadasddad"
+echo .
+./terraform plan --var-file terraform.tfvars -var 'aws_access_key=AKIA2QEFL123456789' -var 'aws_secret_key=sadsadasdasdsadsadasddad'
+echo .
+./terraform apply --var-file terraform.tfvars -var 'aws_access_key=AKIA2QEFL123456789' -var 'aws_secret_key=sadsadasdasdsadsadasddad' --auto-approve

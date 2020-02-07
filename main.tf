@@ -122,4 +122,7 @@ data "aws_ami" "my_ami" {
 # echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
 # packer build -var 'aws_access_key=XXXXXXXXXXXXX' -var 'aws_secret_key=YYYYYYYYYYYYYYYYYYYY' packer.json
 # echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
+#Jenkins-Terrafrom
 # terraform apply --var-file test.tfvars -var="aws_access_key=XXXXXXXXXXXXX" -var='aws_secret_key=YYYYYYYYYYYYYYYYYYYY' --auto-approve
+#AzureDevOps-Terraform
+#terraform plan --var-file terraform.tfvars -var="aws_access_key=xxxxxxxxx" -var="aws_secret_key=asdaddadasadad"

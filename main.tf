@@ -120,9 +120,9 @@ data "aws_ami" "my_ami" {
 # echo "Listing the files in the repo."
 # ls -al
 # echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
-# packer build -var 'aws_access_key=XXXXXXXXXXXXX' -var 'aws_secret_key=YYYYYYYYYYYYYYYYYYYY' packer.json
+# echo "Running Packer Now...!!"
+# packer build -var 'aws_access_key=AAAAAAAAAAAAAAAAAA' -var 'aws_secret_key=BBBBBBBBBBBBB' packer.json
 # echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
-#Jenkins-Terrafrom
-# terraform apply --var-file test.tfvars -var="aws_access_key=XXXXXXXXXXXXX" -var='aws_secret_key=YYYYYYYYYYYYYYYYYYYY' --auto-approve
-#AzureDevOps-Terraform
-#terraform plan --var-file terraform.tfvars -var="aws_access_key=xxxxxxxxx" -var="aws_secret_key=asdaddadasadad"
+# echo "Running Terraform Now...!!"
+# terraform init
+# terraform apply --var-file terraform.tfvars -var="aws_access_key=AAAAAAAAAAAAAAAAAA" -var="aws_secret_key=BBBBBBBBBBBBB" --auto-approve

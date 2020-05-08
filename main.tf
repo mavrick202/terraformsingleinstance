@@ -113,7 +113,7 @@ data "aws_ami" "my_ami" {
 #     }
 # }
 
-#output "ami_id" {
+##output "ami_id" {
 #  value = "${data.aws_ami.my_ami.id}"
 #}
 #!/bin/bash

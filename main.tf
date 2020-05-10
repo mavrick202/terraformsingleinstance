@@ -121,7 +121,7 @@ data "aws_ami" "my_ami" {
 # ls -al
 # echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
 # echo "Running Packer Now...!!"
-# packer build -var 'aws_access_key=AAAAAAAAAAAAAAAAAA' -var 'aws_secret_key=BBBBBBBBBBBBB' packer.json
+# packer build -var=aws_access_key=AAAAAAAAAAAAAAAAAA -var=aws_secret_key=BBBBBBBBBBBBB packer.json
 # echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++"
 # echo "Running Terraform Now...!!"
 # terraform init

@@ -9,12 +9,12 @@
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
     "region": "us-east-1",
-    "source_ami": "ami-00eb20669e0990cb4",
+    "source_ami": "ami-0915e09cc7ceee3ab",
     "instance_type": "t2.micro",
     "ssh_username": "ec2-user",
     "ami_name": "DevOpsClass-Build-{{isotime | clean_resource_name}}",
-    "vpc_id": "vpc-0279b63e55a989eec",
-    "subnet_id": "subnet-030f47dbff6b596aa"
+    "vpc_id": "vpc-0f47002cff9d8dd21",
+    "subnet_id": "subnet-0596d277b10eedf7f"
   }],
   "provisioners": [{
     "type": "shell",
@@ -33,4 +33,3 @@
       ]
   }]
 }
-

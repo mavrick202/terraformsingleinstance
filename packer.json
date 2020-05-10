@@ -10,7 +10,7 @@
     "secret_key": "{{user `aws_secret_key`}}",
     "region": "us-east-1",
     "source_ami": "ami-0915e09cc7ceee3ab",
-    "instance_type": "t2.micro",
+    "instance_type": "t2.nano",
     "ssh_username": "ec2-user",
     "ami_name": "DevOpsClass-Build-{{isotime | clean_resource_name}}",
     "vpc_id": "vpc-0f47002cff9d8dd21",

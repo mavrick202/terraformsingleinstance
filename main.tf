@@ -111,6 +111,7 @@ resource "aws_instance" "web-1" {
         Name = "Server-1"
         Env = "Prod"
         Owner = "Sree"
+	CostCenter = "ABCD"
     }
 }
 

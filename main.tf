@@ -94,7 +94,7 @@ resource "aws_security_group" "allow_all" {
 data "aws_ami" "my_ami" {
      most_recent      = true
      #name_regex       = "^mavrick"
-     owners           = ["721834156908"]
+     owners           = ["284837235494"]
 }
 
 

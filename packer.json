@@ -6,8 +6,6 @@
   },
   "builders": [{
     "type": "amazon-ebs",
-    "access_key": "{{user `aws_access_key`}}",
-    "secret_key": "{{user `aws_secret_key`}}",
     "region": "us-east-1",
     "source_ami": "ami-09d8b5222f2b93bf0",
     "instance_type": "t2.nano",

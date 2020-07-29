@@ -9,7 +9,7 @@
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
     "region": "us-east-1",
-    "source_ami": "ami-0915e09cc7ceee3ab",
+    "source_ami": "ami-09d8b5222f2b93bf0",
     "instance_type": "t2.nano",
     "ssh_username": "ec2-user",
     "ami_name": "DevOpsClass-Build-{{isotime | clean_resource_name}}",

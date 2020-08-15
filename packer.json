@@ -1,36 +1,45 @@
 {
-  "_comment" : "Create a AWS AMI ith AMZ Linux 2018 with Java and Tomcat",
-  "variables": {
-     "aws_access_key": "",
-    "aws_secret_key": ""
-
-  },
-  "builders": [{
-    "access_key": "{{user `aws_access_key`}}",
-    "secret_key": "{{user `aws_secret_key`}}",
-    "type": "amazon-ebs",
-    "region": "us-east-1",
-    "source_ami": "ami-09d8b5222f2b93bf0",
-    "instance_type": "t2.nano",
-    "ssh_username": "ec2-user",
-    "ami_name": "DevOpsClass-Build-{{isotime | clean_resource_name}}",
-    "vpc_id": "vpc-0f47002cff9d8dd21",
-    "subnet_id": "subnet-0596d277b10eedf7f"
-  }],
-  "provisioners": [{
-    "type": "shell",
-    "inline": [
-      "sleep 30",
-      "sudo yum update -y",
-      "sudo yum install nginx -y",
-      "sudo yum install git -y",
-      "sudo git clone https://github.com/mavrick202/webhooktesting.git",
-      "sudo rm -rf /usr/share/nginx/html/index.html",
-      "sudo cp webhooktesting/index.html /usr/share/nginx/html/index.html",
-      "sudo cp webhooktesting/style.css /usr/share/nginx/html/style.css",
-      "sudo cp webhooktesting/scorekeeper.js /usr/share/nginx/html/scorekeeper.js",
-      "sudo service nginx start",
-      "sudo chkconfig nginx on"
-      ]
-  }]
-}
+    "_comment" : "Create a AWS AMI ith AMZ Linux 2018 with Java and Tomcat",
+    "variables": {
+      "aws_access_key": "",
+      "aws_secret_key": "",
+      "region": "",
+      "source_ami":"",
+      "instance_type":"",
+      "vpc_id": "",
+      "subnet_id": ""
+    },
+    "_comment1" : "packer build -var \"aws_secret_key=foo\" template.json",
+    "_comment2" : "packer build -var-file creds.json template.json",
+    "builders": [{
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "type": "amazon-ebs",
+      "region": "{{user `region`}}",
+      "source_ami": "{{user `source_ami`}}",
+      "instance_type": "{{user `instance_type`}}",
+      "ssh_username": "ec2-user",
+      "ami_name": "DevOpsClass-Build-{{isotime | clean_resource_name}}",
+      "vpc_id": "{{user `vpc_id`}}",
+      "subnet_id": "{{user `subnet_id`}}",
+      "tags": {
+        "Name": "DevOpsClass-Build-{{isotime | clean_resource_name}}"
+      }
+    }],
+    "provisioners": [{
+      "type": "shell",
+      "inline": [
+        "sleep 30",
+        "sudo yum update -y",
+        "sudo yum install nginx -y",
+        "sudo yum install git -y",
+        "sudo git clone https://github.com/mavrick202/webhooktesting.git",
+        "sudo rm -rf /usr/share/nginx/html/index.html",
+        "sudo cp webhooktesting/index.html /usr/share/nginx/html/index.html",
+        "sudo cp webhooktesting/style.css /usr/share/nginx/html/style.css",
+        "sudo cp webhooktesting/scorekeeper.js /usr/share/nginx/html/scorekeeper.js",
+        "sudo service nginx start",
+        "sudo chkconfig nginx on"
+        ]
+    }]
+  }

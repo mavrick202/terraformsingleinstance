@@ -18,28 +18,28 @@
       "region": "{{user `region`}}",
       "source_ami": "{{user `source_ami`}}",
       "instance_type": "{{user `instance_type`}}",
-      "ssh_username": "ec2-user",
-      "ami_name": "DevOpsClass-Build-{{isotime | clean_resource_name}}",
+      "ssh_username": "ubuntu",
+      "ami_name": "DevOpsClass-B15-Build-{{isotime | clean_resource_name}}",
       "vpc_id": "{{user `vpc_id`}}",
       "subnet_id": "{{user `subnet_id`}}",
       "tags": {
-        "Name": "DevOpsClass-Build-{{isotime | clean_resource_name}}"
+        "Name": "DevOpsClass-B15-Build-{{isotime | clean_resource_name}}"
       }
     }],
     "provisioners": [{
       "type": "shell",
       "inline": [
         "sleep 30",
-        "sudo yum update -y",
-        "sudo yum install nginx -y",
-        "sudo yum install git -y",
+        "sudo apt update -y",
+        "sudo apt install nginx -y",
+        "sudo apt install git -y",
         "sudo git clone https://github.com/mavrick202/webhooktesting.git",
-        "sudo rm -rf /usr/share/nginx/html/index.html",
-        "sudo cp webhooktesting/index.html /usr/share/nginx/html/index.html",
-        "sudo cp webhooktesting/style.css /usr/share/nginx/html/style.css",
-        "sudo cp webhooktesting/scorekeeper.js /usr/share/nginx/html/scorekeeper.js",
+        "sudo rm -rf /var/www/html/index.nginx-debian.html",
+        "sudo cp webhooktesting/index.html /var/www/html/index.nginx-debian.html",
+        "sudo cp webhooktesting/style.css /var/www/html/style.css",
+        "sudo cp webhooktesting/scorekeeper.js /var/www/html/scorekeeper.js",
         "sudo service nginx start",
-        "sudo chkconfig nginx on"
+        "sudo systemctl enable nginx"
         ]
     }]
   }

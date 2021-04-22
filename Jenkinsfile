@@ -1,24 +1,18 @@
-pipeline {
-    agent any
+node {
+    stage("Build") {
+        echo "Some code compilation here..."
+    }
 
-    stages {
-        stage("Build") {
-            steps {
-                echo "Some code compilation here..."
-            }
-        }
-        
-        stage("Deploy") {
-            steps {
-                echo "Some code compilation here..."
-            }
-        }
-        
-        stage("Test") {
-            steps {
-                echo "Some tests execution here..."
-                echo "1"
-            }
-        }
+    stage("Allow") {
+        echo "Some code compilation here..."
+    }
+    
+    stage("DisAllow") {
+        echo "Some code compilation here..."
+    }
+    
+    stage("Test") {
+        echo "Some tests execution here..."
+        echo 1
     }
 }

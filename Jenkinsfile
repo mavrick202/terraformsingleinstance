@@ -2,7 +2,7 @@ pipeline {
     agent any
  
     stages {
-        stage('Perform Backer Build') {
+        stage('Perform Packer Build') {
             when {
                     expression {
                         env.BRANCH_NAME == 'devopsb17terrafornjenkins'

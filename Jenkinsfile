@@ -9,7 +9,6 @@ pipeline {
                     }
                 }
             steps {
-                dir('terraformsingleinstance') {
                     sh 'pwd'
                     sh 'ls -al'
                     sh 'packer build -var-file packer-vars.json packer.json | tee output.txt'
@@ -19,7 +18,6 @@ pipeline {
                         def AMIID = readFile('ami.txt').trim()
                         sh "echo variable \\\"imagename\\\" { default = \\\"$AMIID\\\" } >> variables.tf"
                     }
-                }
             }
         }
         stage('Terraform Plan') {

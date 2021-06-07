@@ -21,10 +21,8 @@ pipeline {
                     }
                 }
             steps {
-                dir('terraformsingleinstance') {
                     sh 'terraform init'
                     sh 'terraform plan'
-                }
             }
         }
         stage('Terraform Apply') {
@@ -34,10 +32,8 @@ pipeline {
                     }
                 }
             steps {
-                dir('terraformsingleinstance') {
                     sh 'terraform init'
                     sh 'terraform apply --auto-approve'
-                }
             }
         }
         stage('Terraform Destroy') {
@@ -47,11 +43,9 @@ pipeline {
                     }
                 }
             steps {
-                dir('terraformsingleinstance') {
                     sh 'terraform init'
                     sh 'terraform apply --auto-approve'
                 }
-            }
         }
     }
 }

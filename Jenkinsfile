@@ -11,6 +11,7 @@ pipeline {
             steps {
                 dir('terraformsingleinstance') {
                     sh 'pwd'
+                    sh 'ls -al'
                     sh 'packer build -var-file packer-vars.json packer.json | tee output.txt'
                     sh "tail -2 output.txt | head -2 | awk 'match(\$0, /ami-.*/) { print substr(\$0, RSTART, RLENGTH) }' > ami.txt"
                     sh "echo \$(cat ami.txt) > ami.txt"

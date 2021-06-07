@@ -23,7 +23,7 @@ pipeline {
         stage('Terraform Plan') {
             when {
                     expression {
-                        params.ACTION == 'YES'
+                        params.ACTION == 'DEPLOY'
                     }
                 }
             steps {
@@ -36,7 +36,7 @@ pipeline {
         stage('Terraform Apply') {
             when {
                     expression {
-                        params.ACTION == 'YES'
+                        params.ACTION == 'DEPLOY'
                     }
                 }
             steps {
@@ -49,7 +49,7 @@ pipeline {
         stage('Terraform Destroy') {
             when {
                     expression {
-                        params.ACTION == 'YES'
+                        params.ACTION == 'DESTROY'
                     }
                 }
             steps {

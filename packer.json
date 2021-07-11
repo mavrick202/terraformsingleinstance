@@ -10,7 +10,7 @@
       "subnet_id": ""
     },
     "_comment1" : "packer build -var \"aws_secret_key=foo\" template.json",
-    "_comment2" : "packer build -var-file creds.json template.json",
+    "_comment2" : "packer build -var-file packer-vars.json template.json",
     "builders": [{
       "access_key": "{{user `aws_access_key`}}",
       "secret_key": "{{user `aws_secret_key`}}",
@@ -19,11 +19,11 @@
       "source_ami": "{{user `source_ami`}}",
       "instance_type": "{{user `instance_type`}}",
       "ssh_username": "ubuntu",
-      "ami_name": "DevOpsClass-B15-Build-{{isotime | clean_resource_name}}",
+      "ami_name": "DevOpsClass-B18-Build-{{isotime | clean_resource_name}}",
       "vpc_id": "{{user `vpc_id`}}",
       "subnet_id": "{{user `subnet_id`}}",
       "tags": {
-        "Name": "DevOpsClass-B15-Build-{{isotime | clean_resource_name}}"
+        "Name": "DevOpsClass-B18-Build-{{isotime | clean_resource_name}}"
       }
     }],
     "provisioners": [{
@@ -39,7 +39,24 @@
         "sudo cp webhooktesting/style.css /var/www/html/style.css",
         "sudo cp webhooktesting/scorekeeper.js /var/www/html/scorekeeper.js",
         "sudo service nginx start",
-        "sudo systemctl enable nginx"
+        "sudo systemctl enable nginx",
+        "curl https://get.docker.com | bash"
         ]
-    }]
+    },
+    {
+            "type": "file",
+            "source": "docker.service",
+            "destination": "/tmp/docker.service"
+    },
+    {
+        "type": "shell",
+        "inline": [
+            "sudo cp /tmp/docker.service /lib/systemd/system/docker.service",
+            "sudo usermod -a -G docker ubuntu",
+            "sudo systemctl daemon-reload",
+            "sudo service docker restart"
+        ]
+
+    }
+]
   }

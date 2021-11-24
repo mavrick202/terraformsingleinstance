@@ -1,8 +1,8 @@
 #This Terraform Code Deploys Basic VPC Infra.
 provider "aws" {
-    access_key = "${var.aws_access_key}"
-    secret_key = "${var.aws_secret_key}"
-    region = "${var.aws_region}"
+    access_key = "${var.AKIAWIFHVUDYZLVKPR42}"
+    secret_key = "${var.6IvrZWDBfEXmWX/Du4lR5eJ+WHmgr94+xNdDJI2m}"
+    region = "${var.ca-central-1a}"
 }
 
 terraform {

@@ -13,8 +13,8 @@
     "instance_type": "t2.micro",
     "ssh_username": "ec2-user",
     "ami_name": "DevOpsClass-Build-{{isotime | clean_resource_name}}",
-    "vpc_id": "vpc-0279b63e55a989eec",
-    "subnet_id": "subnet-030f47dbff6b596aa"
+    "vpc_id": "vpc-0d7abf1acef2c8b95",
+    "subnet_id": "subnet-0d34503833fac3fff"
   }],
   "provisioners": [{
     "type": "shell",

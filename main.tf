@@ -1,12 +1,12 @@
 #This Terraform Code Deploys Basic VPC Infra.
 provider "aws" {
-    access_key = "${var.aws_access_key}"
-    secret_key = "${var.aws_secret_key}"
-    region = "${var.aws_region}"
+    access_key = "${var.AKIAWIFHVUDYZLVKPR42}"
+    secret_key = "$${var.6IvrZWDBfEXmWX/Du4lR5eJ+WHmgr94+xNdDJI2m}"
+    region = "${var.ca-central-1a}"
 }
 
 terraform {
-  required_version = "<= 0.14" #Forcing which version of Terraform needs to be used
+  required_version = "<= 1.0.11" #Forcing which version of Terraform needs to be used
   required_providers {
     aws = {
       version = "<= 3.0.0" #Forcing which version of plugin needs to be used.

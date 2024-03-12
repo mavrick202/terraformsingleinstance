@@ -15,6 +15,15 @@ resource "aws_instance" "master01" {
     Owner      = "Sree"
     CostCenter = "ABCD"
   }
+	user_data = <<-EOF
+        #!/bin/bash
+        sudo curl https://get.docker.com | bash
+        sudo usermod -a -G docker ubuntu
+        sudo usermod -a -G root ubuntu
+        sudo systemctl daemon-reload
+        sudo systemctl restart docker
+        sudo reboot
+	EOF
 }
 
 #Master Node 2
@@ -34,6 +43,15 @@ resource "aws_instance" "master02" {
     Owner      = "Sree"
     CostCenter = "ABCD"
   }
+	user_data = <<-EOF
+        #!/bin/bash
+        sudo curl https://get.docker.com | bash
+        sudo usermod -a -G docker ubuntu
+        sudo usermod -a -G root ubuntu
+        sudo systemctl daemon-reload
+        sudo systemctl restart docker
+        sudo reboot
+	EOF
 }
 
 #Master Node 3
@@ -53,6 +71,15 @@ resource "aws_instance" "master03" {
     Owner      = "Sree"
     CostCenter = "ABCD"
   }
+	user_data = <<-EOF
+        #!/bin/bash
+        sudo curl https://get.docker.com | bash
+        sudo usermod -a -G docker ubuntu
+        sudo usermod -a -G root ubuntu
+        sudo systemctl daemon-reload
+        sudo systemctl restart docker
+        sudo reboot
+	EOF
 }
 
 #Worker Node 1
@@ -72,6 +99,15 @@ resource "aws_instance" "worker01" {
     Owner      = "Sree"
     CostCenter = "ABCD"
   }
+	user_data = <<-EOF
+        #!/bin/bash
+        sudo curl https://get.docker.com | bash
+        sudo usermod -a -G docker ubuntu
+        sudo usermod -a -G root ubuntu
+        sudo systemctl daemon-reload
+        sudo systemctl restart docker
+        sudo reboot
+	EOF
 }
 
 #Worker Node 2
@@ -91,6 +127,15 @@ resource "aws_instance" "worker02" {
     Owner      = "Sree"
     CostCenter = "ABCD"
   }
+	user_data = <<-EOF
+        #!/bin/bash
+        sudo curl https://get.docker.com | bash
+        sudo usermod -a -G docker ubuntu
+        sudo usermod -a -G root ubuntu
+        sudo systemctl daemon-reload
+        sudo systemctl restart docker
+        sudo reboot
+	EOF
 }
 
 #Worker Node 3
@@ -110,4 +155,13 @@ resource "aws_instance" "worker03" {
     Owner      = "Sree"
     CostCenter = "ABCD"
   }
+	user_data = <<-EOF
+        #!/bin/bash
+        sudo curl https://get.docker.com | bash
+        sudo usermod -a -G docker ubuntu
+        sudo usermod -a -G root ubuntu
+        sudo systemctl daemon-reload
+        sudo systemctl restart docker
+        sudo reboot
+	EOF
 }

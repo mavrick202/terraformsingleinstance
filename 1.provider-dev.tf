@@ -1,7 +1,7 @@
 #This Terraform Code Deploys Basic VPC Infra.
 provider "aws" {
     region = var.aws_region
-    profile = var.aws_profile
+    profile = var.profile
 }
 
 terraform {

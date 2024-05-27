@@ -4,7 +4,7 @@ data "aws_route53_zone" "dns_zone" {
 
 resource "aws_route53_record" "dev_record" {
     count = var.profile == "dev" ? 1 : 0 
-    zone_id = aws_route53_zone.dns_zone.zone_id
+    zone_id = data.aws_route53_zone.dns_zone.zone_id
     name    = "dev1"
     type    = "A"
     ttl     = 300
@@ -16,7 +16,7 @@ resource "aws_route53_record" "dev_record" {
 
 resource "aws_route53_record" "prod_record" {
     count = var.profile == "prod" ? 1 : 0 
-    zone_id = aws_route53_zone.dns_zone.zone_id
+    zone_id = data.aws_route53_zone.dns_zone.zone_id
     name    = "prod1"
     type    = "A"
     ttl     = 300

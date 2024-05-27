@@ -4,7 +4,7 @@ resource "aws_vpc" "default" {
     tags = {
         Name = "${var.vpc_name}"
 	Owner = "Sreeharsha Veerapalli"
-	environment = "${var.environment}"
+	environment = "${var.profile}"
     }
 }
 
@@ -12,6 +12,7 @@ resource "aws_internet_gateway" "default" {
     vpc_id = "${aws_vpc.default.id}"
 	tags = {
         Name = "${var.IGW_name}"
+        environment = "${var.profile}"
     }
 }
 
@@ -22,6 +23,7 @@ resource "aws_subnet" "subnet1-public" {
 
     tags = {
         Name = "${var.public_subnet1_name}"
+        environment = "${var.profile}"
     }
 }
 
@@ -32,6 +34,7 @@ resource "aws_subnet" "subnet2-public" {
 
     tags = {
         Name = "${var.public_subnet2_name}"
+        environment = "${var.profile}"
     }
 }
 
@@ -42,6 +45,7 @@ resource "aws_subnet" "subnet3-public" {
 
     tags = {
         Name = "${var.public_subnet3_name}"
+        environment = "${var.profile}"
     }
 	
 }
@@ -57,6 +61,7 @@ resource "aws_route_table" "terraform-public" {
 
     tags = {
         Name = "${var.Main_Routing_Table}"
+        environment = "${var.profile}"
     }
 }
 
@@ -95,9 +100,9 @@ resource "aws_instance" "web-1" {
     vpc_security_group_ids = ["${aws_security_group.allow_all.id}"]
     associate_public_ip_address = true	
     tags = {
-        Name = "Server-1"
+        Name = "${var-profile}-Server-1"
         Env = "Prod"
         Owner = "Sree"
-	     CostCenter = "ABCD"
+	    CostCenter = "ABCD"
     }
 }

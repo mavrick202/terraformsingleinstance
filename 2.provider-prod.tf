@@ -4,13 +4,13 @@ provider "aws" {
     profile = var.profile
 }
 
-provider "aws" {
-  alias = "dns"
-  region = "us-east-1"
-  assume_role {
-  role_arn = "arn:aws:iam::721834156908:role/awsb59-cross-account-role"
-  }
-}
+#provider "aws" {
+#  alias = "dns"
+#  region = "us-east-1"
+#  assume_role {
+#  role_arn = "arn:aws:iam::721834156908:role/awsb59-cross-account-role"
+#  }
+#}
 
 terraform {
   required_version = "<= 2.3.14"

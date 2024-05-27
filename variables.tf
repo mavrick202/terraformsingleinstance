@@ -34,4 +34,5 @@ variable "instance_type" {
     }
 }
 variable "profile" {}
+variable "dns_name" {}
 

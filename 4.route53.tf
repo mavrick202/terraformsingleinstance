@@ -15,6 +15,7 @@ resource "aws_route53_record" "dev_record" {
 }
 
 resource "aws_route53_record" "prod_record" {
+    provider        = aws.dns
     count = var.profile == "prod" ? 1 : 0 
     zone_id = data.aws_route53_zone.dns_zone.zone_id
     name    = "prod1"

@@ -34,7 +34,9 @@ pipeline {
         }
         stage('Terraform Apply & Status') {
             when {
+                expression {
                 "${env.DESTROY}" == "NO"
+                }
             }
             steps {
                 sh 'terraform apply --auto-approve'
@@ -43,7 +45,9 @@ pipeline {
         }
         stage('Terraform Destroy') {
             when {
+                expression {
                 "${env.DESTROY}" == "YES"
+                }
             }
             steps {
                 sh 'terraform destroy --auto-approve'

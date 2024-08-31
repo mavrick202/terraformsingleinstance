@@ -9,6 +9,9 @@ terraform {
     bucket = "sreeterraformbucket"
     key    = "myterraform.tfstate"
     region = "us-east-1"
+    # Replace this with your DynamoDB table name!
+    #dynamodb_table = "terraform-up-and-running-locks"
+    #encrypt        = true
   }
 }
 

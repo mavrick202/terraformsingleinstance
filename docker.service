@@ -48,5 +48,3 @@ KillMode=process
 
 [Install]
 WantedBy=multi-user.target
-
-#DEMO DEMO DEMO

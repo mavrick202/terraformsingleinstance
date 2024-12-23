@@ -43,7 +43,7 @@ TasksMax=infinity
 # set delegate yes so that systemd does not reset the cgroups of docker containers
 Delegate=yes
 
-# kill only the docker process, not all processes in the cgroup asdasdasdasdadsasdasdsd
+# kill only the docker process, not all processes in the cgroup
 KillMode=process
 
 [Install]

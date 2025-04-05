@@ -1,0 +1,57 @@
+name: Terraform Plan Reusable Workflow
+on:
+  workflow_call:
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  #Below secrets are inherited from the parent workflow
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  
+jobs:
+  reusable-workflow-job:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./CustomerAlpha
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.10.4
+      - name: Print Branch Reference & Folder
+        run: echo The Current Branch Is $GITHUB_REF && pwd && ls -al
+      - name: Exporting AWS Credentials
+        run: |
+          export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+          export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - name: Terraform Init, Format, Validate
+        run: |
+          terraform init
+          terraform fmt
+          terraform validate
+      - name: Creating Terraform Workspace
+        shell: bash
+        run: |
+          rm -rf .terraform && terraform init
+          terraform workspace select dev || terraform workspace new dev
+          terraform workspace select prod || terraform workspace new prod
+          terraform workspace list
+      - name: Terraform Plan
+        run: |
+          if [ ${GITHUB_REF} == 'refs/heads/development' ]; then
+            echo "Running Terraform Plan For Development Environment"
+            terraform workspace select dev
+            terraform plan --var-file=dev.tfvars
+          elif [ ${GITHUB_REF} == 'refs/heads/production' ]; then
+            echo "Running Terraform Plan For Production Environment"
+            terraform workspace select prod
+            terraform plan --var-file=prod.tfvars
+          else
+            echo "Nothing Is Deployed As The Branch Is Not Dev or Prod."
+          fi
